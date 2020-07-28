@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.cacheh2.mapper.CacheMapper">
+    <select id="getList" resultType="com.example.cacheh2.domain.CacheDomain">    
+        select * from student
+    </select>
+
+    <select id="getCategoryList" resultType="com.example.cacheh2.domain.ProductDomain">
+    SELECT  C.CATEGORY_NO as categoryNo,
+            C.PARENT_NO as parentNo,
+            C.DEPTH as depth,
+    NVL((SELECT CATEGORY_NAME||'-' FROM CATEGORY WHERE CATEGORY_NO = C.PARENT_NO),'')||C.CATEGORY_NAME as categoryName
+    FROM CATEGORY C
+    </select>
+
+    <select id="getCategoryProdList" parameterType="com.example.cacheh2.domain.ProductDomain" resultType="com.example.cacheh2.domain.ProductDomain">
+    SELECT  C.CATEGORY_NO as categoryNo,
+            C.CATEGORY_NAME as categoryName,
+            C.PARENT_NO as parentNo,
+            P.PRODUCT_NO as productNo,
+            P.BRAND_NAME as brandName,
+            P.PRODUCT_NAME as productName,
+            P.PRODUCT_PRICE as price
+    FROM CATEGORY C, PRODUCT P
+    WHERE C.CATEGORY_NAME=#{categoryName}
+    AND P.CATEGORY_NO = C.CATEGORY_NO
+    </select>
+
+    <select id="getProdInfo" parameterType="com.example.cacheh2.domain.ProductDomain" resultType="com.example.cacheh2.domain.ProductDomain" >
+    SELECT  P.PRODUCT_NAME as productName,
+            P.CATEGORY_NO as categoryNo,                        
+            NVL((SELECT CATEGORY_NAME||'-' FROM CATEGORY WHERE CATEGORY_NO = C.PARENT_NO),'')||C.CATEGORY_NAME as categoryName
+    FROM PRODUCT P, CATEGORY C
+    WHERE P.PRODUCT_NAME = #{productName}
+    AND C.CATEGORY_NO = P.CATEGORY_NO
+    GROUP BY productName, categoryName, price
+    </select>
+
+</mapper>
