@@ -1,5 +1,7 @@
 package com.example.cacheh2.domain;
 
+import java.math.BigDecimal;
+
 public class ProductDomain {
 
     private int categoryNo;
@@ -11,7 +13,8 @@ public class ProductDomain {
     private String brandName;
     private String productName;
 
-    private double price;
+    private BigDecimal price;
+    // private double price;
 
     public int getCategoryNo() {
         return categoryNo;
@@ -69,19 +72,20 @@ public class ProductDomain {
         this.productName = productName;
     }
 
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
+    
     @Override
     public String toString() {
         return "ProductDomain [brandName=" + brandName + ", categoryName=" + categoryName + ", categoryNo=" + categoryNo
                 + ", depth=" + depth + ", parentNo=" + parentNo + ", price=" + price + ", productName=" + productName
                 + ", productNo=" + productNo + "]";
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
     

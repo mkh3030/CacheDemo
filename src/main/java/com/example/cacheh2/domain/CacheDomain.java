@@ -2,29 +2,48 @@ package com.example.cacheh2.domain;
 
 public class CacheDomain {
 
-    private String id;
-    private String name;
+    private String key;
+    private long time;
+    private ProductDomain item;
+    private int callCnt;
 
-    public String getId() {
-        return id;
+    public String getKey() {
+        return key;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setKey(String key) {
+        this.key = key;
     }
 
-    public String getName() {
-        return name;
+    public long getTime() {
+        return time;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public ProductDomain getItem() {
+        return item;
+    }
+
+    public void setItem(ProductDomain item) {
+        this.item = item;
+    }
+    public int getCallCnt() {
+        return callCnt;
+    }
+
+    public void setCallCnt(int callCnt) {
+        this.callCnt = callCnt;
     }
 
     @Override
     public String toString() {
-        return "CacheDomain [id=" + id + ", name=" + name + "]";
+        return "CacheDomain [callCnt=" + callCnt + ", item=" + item + ", key=" + key + ", time=" + time + "]";
     }
+
+    
 
     
     
