@@ -16,7 +16,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
-@EnableAutoConfiguration
 @SpringBootApplication
 @EnableScheduling
 @MapperScan("com.example.cacheh2.mapper")
