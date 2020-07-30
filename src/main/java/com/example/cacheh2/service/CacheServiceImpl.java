@@ -17,7 +17,7 @@ public class CacheServiceImpl implements CacheService {
     @Autowired
     CacheMapper cacheMapper;
 
-    //cache 사이즈 정함. 오래된 캐시는 사이즈 넘어가면 삭제
+    //cache 사이즈 정함. 오래된 캐시는 조회확률 낮다고 판단하여 사이즈 넘어가면 삭제
     LRUCache prodInfoCache = new LRUCache(50);
     LRUCache categoryCache = new LRUCache(1);
     LRUCache categoryProdCache = new LRUCache(10);
