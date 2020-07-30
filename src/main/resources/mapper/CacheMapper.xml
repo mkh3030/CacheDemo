@@ -29,7 +29,7 @@
 
     <select id="getProdInfo" parameterType="com.example.cacheh2.domain.ProductDomain" resultType="com.example.cacheh2.domain.ProductDomain" >
     SELECT  P.PRODUCT_NAME as productName,
-            P.CATEGORY_NO as categoryNo,                        
+            P.PRODUCT_PRICE as price,
             NVL((SELECT CATEGORY_NAME||'-' FROM CATEGORY WHERE CATEGORY_NO = C.PARENT_NO),'')||C.CATEGORY_NAME as categoryName
     FROM PRODUCT P, CATEGORY C
     WHERE P.PRODUCT_NAME = #{productName}
