@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.cacheh2.mapper.ProductMapper">
+    <update id="updateProductName" parameterType="com.example.cacheh2.domain.ProductDomain">
+    UPDATE PRODUCT 
+    SET PRODUCT_NAME=#{productName}
+    WHERE PRODUCT_NO=#{productNo}
+    </update>
+
+    <update id="updateProductPrice" parameterType="com.example.cacheh2.domain.ProductDomain">
+    UPDATE PRODUCT 
+    SET PRICE=#{price}
+    WHERE PRODUCT_NO=#{productNo}
+    </update>
+
+    <update id="updateCategoryName" parameterType="com.example.cacheh2.domain.ProductDomain">
+    UPDATE CATEGORY
+    SET CATEGORY_NAME=#{categoryName}
+    WHERE CATEGORY_NO = #{categoryNo}
+    </update>
+
+</mapper>
