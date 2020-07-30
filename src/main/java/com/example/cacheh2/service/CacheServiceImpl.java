@@ -5,6 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.example.cacheh2.LRUCache;
 import com.example.cacheh2.domain.CacheDomain;
 import com.example.cacheh2.domain.ProductDomain;
 import com.example.cacheh2.mapper.CacheMapper;
@@ -18,6 +19,8 @@ public class CacheServiceImpl implements CacheService {
 
     @Autowired
     CacheMapper cacheMapper;
+
+    LRUCache
 
     LinkedHashMap<String, Object> cacheMap = new LinkedHashMap<String, Object>();
     LinkedHashMap<String, CacheDomain> prodInfoCache = new LinkedHashMap<String, CacheDomain>(5);
