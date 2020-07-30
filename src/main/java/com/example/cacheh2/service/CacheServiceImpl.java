@@ -20,7 +20,6 @@ public class CacheServiceImpl implements CacheService {
     @Autowired
     CacheMapper cacheMapper;
 
-    LRUCache
 
     LinkedHashMap<String, Object> cacheMap = new LinkedHashMap<String, Object>();
     LinkedHashMap<String, CacheDomain> prodInfoCache = new LinkedHashMap<String, CacheDomain>(5);
