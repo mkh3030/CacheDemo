@@ -47,7 +47,7 @@ public class CacheServiceImpl implements CacheService {
         // TODO Auto-generated method stub
         List<ProductDomain> cateProdList = (List<ProductDomain>) categoryProdCache.get(""+obj.getCategoryNo());
         if(cateProdList==null){
-            System.out.println("CP NULL");
+            System.out.println("Cache miss! Category ProdList is NULL");
             cateProdList = cacheMapper.getCategoryProdList(obj);
             if(cateProdList!=null && cateProdList.size()>0){
                 categoryProdCache.put(""+cateProdList.get(0).getCategoryNo(), cateProdList);
@@ -64,14 +64,13 @@ public class CacheServiceImpl implements CacheService {
     public ProductDomain getProdInfo(ProductDomain obj) throws Exception {
         // TODO Auto-generated method stub
 
-        System.out.println(obj.toString());
-        prodInfoCache.get(obj.getProductName());        
+        prodInfoCache.get(""+obj.getProductNo());        
         ProductDomain prodInfo = new ProductDomain();
 
         prodInfo = (ProductDomain) prodInfoCache.get(""+obj.getProductNo());
 
         if(prodInfo==null){
-            System.out.println("PROD NULL");
+            System.out.println("Cache miss! ProductionInfo NULL");
             prodInfo = cacheMapper.getProdInfo(obj);
             //product에 중복값이 있어 name, price, categoryName 으로 그룹핑하고 productName만 있을 경우 productNo의 최소값으로 리턴
             if(prodInfo!=null){                        
